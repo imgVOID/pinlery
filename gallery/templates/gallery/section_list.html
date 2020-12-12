@@ -1,0 +1,82 @@
+{% extends 'gallery/base.html' %}
+{% load static %}
+
+{% block static_CSS %}
+    {% include 'gallery/partials/imports/import-static-css.html' %}
+{% endblock %}
+
+{% block page_styling %}
+    <link rel="stylesheet" type="text/css" href="{% static '/gallery/css/grid/grid_section_list.css' %}">
+{% endblock %}
+
+{% block navigation %}
+    {% include 'gallery/partials/elements/nav-bar.html' %}
+{% endblock %}
+
+<! -- main -->
+{% block content %}
+        <div class="masonry-grid">
+            {% if section_list %}
+                {% for section in section_list %}
+                    <div class="masonry-grid-item">
+                        <div class="border border-light card bg-primary bg-1 shadow">
+                            <div class="text-black rounded text-center p-3 mt-4">
+                                <a class="" href="{% url 'showcase' section.slug %}">
+                                    <h3 class="p-0 mb-0">{{ section.title_custom_split.0 }}</h3>
+                                    <span class="text-gray m-1">{{ section.title_custom_split.1 }}</span>
+                                </a>
+                            </div>
+
+                            <div class="row mr-4 ml-4 p-1 mb-3">
+                                {% for pin in section.pin_set.all|slice:":2" %}
+                                    <div class="col-6">
+                                        <a data-fancybox="collection" data-options='{
+                                        "caption":"<a href=\"{% url 'showcase' section.slug %}\">{{ section.title }}<br>Touch to enter the entire collection!</a>",
+                                        "src":"{{ pin.image_url }}", "link":"{% url 'showcase' section.slug %}", "clickContent" : false, "idleTime": false,
+                                        "buttons": ["slideShow","thumbs","close"]}'>
+                                            <img src="{{ pin.small_image_url }}" alt="" class="shadow-lg rounded d-block">
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="post-meta border border-light rounded bg-2 p-2 m-2">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <span class="badge badge-lg shadow-inset">
+                                            <b class="">
+                                                <span aria-hidden="true" class="far fa-heart "></span>
+                                                {{ section.pin_set.all|length }}
+                                            </b>
+                                        </span>
+                                    </div>
+                                    <div class="col-9 text-right">
+                                        <button class="btn btn-sm btn-icon-only btn-primary btn-pill text-danger mr-2 bg-1" type="button">
+                                            <span aria-hidden="true" class="far fa-heart"></span>
+                                        </button>
+                                        <button class="btn btn-sm btn-icon-only btn-primary btn-pill text-gray bg-1 " type="button">
+                                            <span aria-hidden="true" class="far fa-heart"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+{% endblock %}
+
+{% block menu %}
+    {% include 'gallery/partials/elements/menu.html' with mode='section_list' %}
+{% endblock %}
+
+{% block static_JS %}
+    {% include './partials/imports/import-static-js.html' %}
+{% endblock %}
+
+{% block page_scripts %}
+{% include './partials/scripts/script_init_grid.html' with mode='section_list' margin=0 only %}
+    <script src="{% static '/gallery/js/lightbox_image_link.js' %}"></script>
+{% endblock %}
+

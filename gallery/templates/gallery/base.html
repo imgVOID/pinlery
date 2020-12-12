@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<!- head ->
+<head>
+    <!- meta ->
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <!- title ->
+    <title>#AESTHETICLIMBO</title>
+
+    {% block static_CSS %}
+    {% endblock %}
+
+    {% block page_styling %}
+    {% endblock %}
+
+</head>
+
+<!- body ->
+<body>
+    <div class="wrapper" id="my-page">
+
+        {% block navigation %}
+        {% endblock %}
+
+        <!- CONTENT block ->
+        {% block content %}
+        {% endblock %}
+
+        {% block menu %}
+        {% endblock %}
+
+</div>
+
+    {% block static_JS %}
+    {% endblock %}
+
+    {% block page_scripts %}
+    {% endblock %}
+
+</body>
+</html>

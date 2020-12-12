@@ -1,0 +1,15 @@
+.item {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.masonry-grid-item {
+	padding: 9px;
+}
+
+.masonry-grid-item img {
+	box-sizing: border-box;
+	width: 100%;
+	height: auto;
+}

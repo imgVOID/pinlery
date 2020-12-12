@@ -1,0 +1,12 @@
+
+.fancybox-fx-slide-in-out.fancybox-slide--previous {
+	transform: translateX(-100%);
+}
+
+.fancybox-fx-slide-in-out.fancybox-slide--next {
+	transform: translateX(100%);
+}
+
+.fancybox-fx-slide-in-out.fancybox-slide--current {
+	transform: translateX(0);
+}

@@ -1,0 +1,29 @@
+{{ section_slug|json_script:"section_slug" }}
+{{ mode|json_script:"mode" }}
+<script>
+    $(function() {
+        let section_slug = JSON.parse(document.getElementById('section_slug').textContent);
+        let mode = JSON.parse(document.getElementById('mode').textContent);
+        let section = '[data-fancybox="' + section_slug + '"]';
+        let autoStart = mode === 'fullscreen';
+        $(section).fancybox({
+            fullScreen : {
+                autoStart : autoStart,
+            },
+            buttons: ["share","slideShow","thumbs","close"],
+            idleTime: false,
+            arrows: false,
+            protect: true,
+        });
+        if (mode === 'fullscreen'){
+            $(document).on('afterShow.fb', function( e, instance, slide ) {
+                document.body.style.cursor = 'grab';
+            });
+
+            $(document).on('afterClose.fb', function( e, instance, slide ) {
+                document.body.style.cursor = 'default';
+            });
+        }
+    });
+</script>
+

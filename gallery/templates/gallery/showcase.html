@@ -1,0 +1,96 @@
+{% extends 'gallery/base.html' %}
+{% load static %}
+
+{% block static_CSS %}
+    {% include 'gallery/partials/imports/import-static-css.html' %}
+{% endblock %}
+
+{% block page_styling %}
+    <link rel="stylesheet" type="text/css" href="{% static '/gallery/css/grid/grid_showcase.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/gallery/css/fancybox_animation.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/gallery/css/skeuomorphic_frame.css' %}">
+{% endblock %}
+
+{% block navigation %}
+    {% include 'gallery/partials/elements/nav-bar.html' %}
+{% endblock %}
+
+<! -- main -->
+{% block content %}
+    <header class="text-center jumbotron bg-primary  m-0">
+        <h1 class="badge badge-pill badge-primary text-gray text-uppercase"><b> {{ section_title.1 }}</b></h1>
+        <h1>
+            {{ section_title.0 }}
+        </h1>
+    <p> artworks collection</p>
+
+        {% if pins.paginator.num_pages > 1  %}
+            <ul class="pagination circle-pagination pagination-sm justify-content-center">
+                {% if pins.number > paginate_limit.0 %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1">
+                            <i class="fas fa-angle-double-left"></i>
+                        </a>
+                    </li>
+                {% endif %}
+                {% for i in pins.paginator.page_range %}
+                    {% if pins.number == i %}
+                        <li class="page-item active disabled">
+                            <a class="page-link  rounded" href="#">
+                                <b>{{ i }}</b>
+                                <span class="sr-only">current</span>
+                            </a>
+                        </li>
+                    {% elif i > pins.number|add:'-3' and i < pins.number|add:'3' %}
+                        <li class="page-item">
+                            <a class="page-link  rounded" href="?page={{ i }}">
+                                <b>{{ i }}</b>
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                {% if pins.number <= pins.paginator.num_pages|add:paginate_limit.1 %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ pins.paginator.num_pages }}">
+                                <i class="fas fa-angle-double-right"></i>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        {% endif %}
+        </header>
+    <div class="container container-masonry">
+        <div class="masonry-grid row">
+           <div id="masonry-grid-sizer" class=" col-xs-11 col-md-6 col-lg-6"></div>
+           {% for pin in pins %}
+               <div class="masonry-grid-item col-xs-11 col-md-6 col-lg-6">
+                   <div class="itemContent">
+                       <div class="item btn btn-primary border-0 rounded-0 m-0 p-0">
+                           <div class="frame" style="background-color:{{ pin.color }}">
+                               <a data-fancybox="{{ section_slug }}" data-type="image" href="{{ pin.image_url }}"
+                                  data-caption="{{ pin.title }}" class="imageWrapper">
+                                   <img src="{{ pin.image_url }}" alt="" class="image">
+                               </a>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block menu %}
+    {% include 'gallery/partials/elements/menu.html' with mode="showcase" %}
+{% endblock %}
+
+{% block static_JS %}
+    {% include './partials/imports/import-static-js.html' %}
+{% endblock %}
+
+{% block page_scripts %}
+<!-- grid -->
+{% include './partials/scripts/script_init_grid.html' with mode='showcase' only %}
+{% include './partials/scripts/script_init_fancybox.html' with mode='fullscreen' section_slug=section_slug only %}
+{% endblock %}
+

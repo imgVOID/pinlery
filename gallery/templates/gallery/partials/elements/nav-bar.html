@@ -1,0 +1,38 @@
+<nav class="shadow mh-head Sticky m-0 p-0" id="header" style="background-color: rgb(243,243,243)">
+   <div class="mh-btns-left">
+      <a class="navbar-toggler mh-burger btn-icon btn-icon-only"
+         data-toggle="collapse" data-target="#menu" aria-controls="menu"
+         aria-expanded="true" aria-label="Toggle navigation" id="toggler">
+        <span class="mburger mburger--collapse">
+            <b></b>
+            <b></b>
+            <b></b>
+        </span>
+      </a>
+   </div>
+   <a>
+      <h3 class="mh-text m-0">#AESTHETICLIMBO</h3>
+   </a>
+   <div class="mh-btns-right m-0">
+      <a class="btn-icon btn-icon-only" id="back-to-top"><i class="fas fa-arrow-up"></i></a>
+   </div>
+</nav>
+
+{% if pins.paginator.num_pages > 1 %}
+    <nav class="mh-head fixed-bottom paginationArrows mb-2" id="pagination" style="background-color: rgba(0,0,0,0);">
+        <div class="mh-btns-left mb-2">
+            {% if pins.has_previous %}
+             <a class="nav-link-arrow page-link btn btn-icon btn-icon-only rounded text-gray" href="?page={{ pins.previous_page_number }}">
+                 <i class="fas fa-arrow-left"></i>
+             </a>
+            {% endif %}
+        </div>
+        <div class=" mh-btns-right mb-2">
+            {% if pins.has_next %}
+             <a class="nav-link-arrow page-link btn btn-icon btn-icon-only text-gray" href="?page={{ pins.next_page_number }}">
+                 <i class="fas fa-arrow-right"></i>
+             </a>
+            {% endif %}
+        </div>
+    </nav>
+{% endif %}

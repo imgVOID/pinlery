@@ -1,0 +1,18 @@
+<script>
+    $(window).on('load', function() {
+        var grid = $(".masonry-grid")
+        function gridMasonry() {
+            if (grid.length) {
+                grid.isotope({
+                    itemSelector: ".masonry-grid-item",
+                    packery: {
+                        columnWidth: "#masonry-grid-sizer",
+                        gutter: 0,
+                    },
+                });
+            }
+        }
+        gridMasonry();
+    });
+
+</script>
