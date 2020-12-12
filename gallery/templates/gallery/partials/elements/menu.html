@@ -19,8 +19,8 @@
              </a>
              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 {% for section in section_list %}
-                    <a class="dropdown-item" href="{% url 'showcase' section.slug %}">
-                    {{ section.slug }}
+                    <a class="dropdown-item d-block" href="{% url 'showcase' section.slug %}">
+                    {{ section.title_custom_split.0 }}
                     </a>
                     <div class="dropdown-divider"></div>
                 {% endfor %}

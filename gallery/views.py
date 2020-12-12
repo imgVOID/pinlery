@@ -1,20 +1,15 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
-from py3pin.Pinterest import Pinterest
 from django.db import IntegrityError
 import os
-from django.shortcuts import render
-from pinlery.settings import BASE_DIR
 from django.shortcuts import redirect
 from django.views import generic
 from django.core.paginator import Paginator
 from .models import Board, Section, Pin
+from pinlery.init_api import pinterest
 
-pinterest = Pinterest(email='nennertrennen@gmail.com',
-                      password='PIZa69pINTERES',
-                      username='nennertrennen',
-                      cred_root=os.path.join(BASE_DIR, 'cookies'))
-pinterest.login()
+# pinterest.login()
+
 
 def showcase(request, section_slug):
     section_list = Section.objects.filter(active=True)
@@ -25,7 +20,7 @@ def showcase(request, section_slug):
     paginator = Paginator(pins, 15)
     page = request.GET.get('page')
     pins = paginator.get_page(page)
-    paginate_limit = [3,-3]
+    paginate_limit = [3, -3]
     title_custom_split = section.title.replace('[ ', '').split(' ] ')
     slug_custom_split = section.title.replace('[ ', '').split(' ] ')[0].replace(' ', '-').lower()
     menu_description = '{} {} {}'.format('Artworks by', title_custom_split[0], 'on')
@@ -37,6 +32,7 @@ def showcase(request, section_slug):
         'menu_description': menu_description,
         'paginate_limit': paginate_limit
     })
+
 
 class section_list(generic.ListView):
     model = Section
@@ -51,7 +47,9 @@ class section_list(generic.ListView):
         context['menu_description'] = '{} {} {}'.format('There is', count, 'personal art galleries on')
         return context
 
+
 def create_boards(request):
+    # TODO remove hardcoded credential
     boards = pinterest.boards(username='nennertrennen')
     for board in boards:
         target_board_id = int(board['id'])
