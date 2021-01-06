@@ -32,4 +32,4 @@ If you wanna to join the project in those alpha phase plz write a random issue w
 * ~~Migrate from the Macy.JS to the Isotope.~~
 * ~~Add fixed left and right pagination arrows.~~
 * ~~Change Mmenu.JS test data to a dynamic data.~~
-* ~~(Option) Add pagination arrows to the top showcase's jumbotron.
+* ~~(Option) Add pagination arrows to the top showcase's jumbotron.~~
