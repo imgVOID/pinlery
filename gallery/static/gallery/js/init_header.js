@@ -1,7 +1,7 @@
 $(function() {
 	$("#header").mhead({
 		scroll: {
-			hide: 200
+			hide: 20000
 		},
 	});
 });

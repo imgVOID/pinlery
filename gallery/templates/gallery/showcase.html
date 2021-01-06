@@ -6,7 +6,6 @@
 {% endblock %}
 
 {% block page_styling %}
-    <link rel="stylesheet" type="text/css" href="{% static '/gallery/css/grid/grid_showcase.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static '/gallery/css/fancybox_animation.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static '/gallery/css/skeuomorphic_frame.css' %}">
 {% endblock %}
@@ -22,7 +21,6 @@
         <h1>
             {{ section_title.0 }}
         </h1>
-    <p> artworks collection</p>
 
         {% if pins.paginator.num_pages > 1  %}
             <ul class="pagination circle-pagination pagination-sm justify-content-center">
@@ -63,9 +61,9 @@
         <div class="masonry-grid row">
            <div id="masonry-grid-sizer" class=" col-xs-11 col-md-6 col-lg-6"></div>
            {% for pin in pins %}
-               <div class="masonry-grid-item col-xs-11 col-md-6 col-lg-6">
+               <div class="masonry-grid-item col-xs-11 col-md-6 col-lg-6" >
                    <div class="itemContent">
-                       <div class="item btn btn-primary border-0 rounded-0 m-0 p-0">
+                       <div class="item shadow-soft border-0 rounded-0 m-0 p-0">
                            <div class="frame" style="background-color:{{ pin.color }}">
                                <a data-fancybox="{{ section_slug }}" data-type="image" href="{{ pin.image_url }}"
                                   data-caption="{{ pin.title }}" class="imageWrapper">
