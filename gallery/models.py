@@ -63,7 +63,7 @@ class Section(models.Model):
 #        return self.title.replace('[ ', '').split(' ] ')[0].replace(' ', '-').lower()
 
     def __str__(self):
-        return self.title
+        return "{} | {}".format(self.board.title, self.title)
 
     def save(self, *args, **kwargs):
         value = self.title.replace('[ ', '').split(' ] ')[0]
