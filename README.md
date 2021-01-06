@@ -7,7 +7,6 @@ If you wanna to join the project in those alpha phase plz write a random issue w
 ### TECHNOLOGIES LIST
 * BACK-END (PYTHON):
 1. Django 3
-2. py3pinterest
 3. whitenoise
 * FRONT-END (JS, CSS):
 1. Bootstrap 4
@@ -25,7 +24,6 @@ If you wanna to join the project in those alpha phase plz write a random issue w
 * (BUG) Add an auto filling for the slug field on a board object creation event.
 * (Future) Create the Redis-based caching.
 * (Future) Admin panel customisation (maybe Grapelli).
-* (Option) Add pagination arrows to the top showcase's jumbotron.
 ###### DONE
 * ~~Add "scroll to top" button.~~
 * ~~Add detailed pagination to the top.~~
@@ -34,3 +32,4 @@ If you wanna to join the project in those alpha phase plz write a random issue w
 * ~~Migrate from the Macy.JS to the Isotope.~~
 * ~~Add fixed left and right pagination arrows.~~
 * ~~Change Mmenu.JS test data to a dynamic data.~~
+* ~~(Option) Add pagination arrows to the top showcase's jumbotron.
