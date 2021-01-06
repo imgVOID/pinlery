@@ -1,3 +1,2 @@
 django
-py3-pinterest
 django-fontawesome-5
