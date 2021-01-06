@@ -6,10 +6,6 @@ from django.shortcuts import redirect
 from django.views import generic
 from django.core.paginator import Paginator
 from .models import Board, Section, Pin
-from pinlery.init_api import pinterest
-
-# pinterest.login()
-
 
 def showcase(request, section_slug):
     section_list = Section.objects.filter(active=True)
@@ -50,17 +46,22 @@ class section_list(generic.ListView):
 
 def create_boards(request):
     # TODO remove hardcoded credential
-    boards = pinterest.boards(username='nennertrennen')
-    for board in boards:
-        target_board_id = int(board['id'])
-        new_board = Board(title=board['name'], id_pinterest=target_board_id)
-        try:
-            new_board.save()
-        except IntegrityError:
-            continue
-
+    from pinlery.init_api import Pinterest
+    pinterest = Pinterest(username='nennertrennen')
+    boards = pinterest.get_user_boards()
+    while boards:
+        for board in boards:
+            target_board_id = int(board['id'])
+            new_board = Board(title=board['name'], id_pinterest=target_board_id)
+            try:
+                new_board.save()
+            except IntegrityError:
+                continue
+        boards = pinterest.get_user_boards()
 
 def create_sections(request):
+    from pinlery.init_api import Pinterest
+    pinterest = Pinterest()
     active_boards = Board.objects.filter(active=True)
     for board in active_boards:
         target_board_id = str(int(board.id_pinterest))
@@ -77,7 +78,9 @@ def create_sections(request):
 
 
 def create_pins(request):
-    active_sections = Section.objects.filter(active=True)
+    from pinlery.init_api import Pinterest
+    pinterest = Pinterest()
+    active_sections = Section.objects.filter(active=True, board__active=True)
     for section in active_sections:
         target_section_id = str(int(section.id_pinterest))
         pins = pinterest.get_section_pins(section_id=target_section_id)
@@ -86,14 +89,13 @@ def create_pins(request):
                 if len(pin["title"]) < 2 and len(pin["description"]) < 2:
                     pin_title = "Untitled"
                 elif len(pin["title"]) < 2:
-                    pin_title = pin["description"]
+                    pin_title = pin["description"][0:27]
                 else:
                     pin_title = pin["title"]
                 pin_id = int(pin['id'])
-                pin_color = pin['dominant_color']
                 new_pin = Pin(id_pinterest=pin_id, title=pin_title, section=section,
                               image_url=pin["images"]["orig"]["url"],
-                              small_image_url=pin["images"]["236x"]["url"], color=pin_color)
+                              small_image_url=pin["images"]["236x"]["url"], color=pin['dominant_color'])
                 try:
                     new_pin.save()
                 except IntegrityError:
