@@ -1,21 +1,20 @@
 # PINLERY 
-#### The first media CMS for a Pinterest-based online gallery creation, written in Python Django.
-
+#### CMS for an automatic Pinterest-based website creation.
 ### Simple [Pinterest API](https://github.com/imgVOID/pinlery/blob/new/pinlery/init_api.py) web scraping in Python - use Pinterest as a free modern managed imagebase!
 [![Open Source Helpers](https://www.codetriage.com/imgvoid/pinlery/badges/users.svg)](https://www.codetriage.com/imgvoid/pinlery)
+
 
 
 ### TECHNOLOGIES LIST
 * BACK-END (PYTHON):
 1. django 3
 2. requests
-3. 
+3. fontawesome-free
 * FRONT-END (JS, CSS):
 1. Bootstrap 4
 2. Isotope 3
 3. Fancybox 3
 4. Mmenu.JS
-5. FontAwesome 5
 6. Themesberg Neumorphism 
 
 #### TODO LIST
