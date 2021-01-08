@@ -1,2 +1,2 @@
+requests
 django
-django-fontawesome-5

@@ -76,6 +76,7 @@
 {% endblock %}
 
 {% block page_scripts %}
+{% include './partials/scripts/script_init_header.html' %}
 {% include './partials/scripts/script_init_grid.html' with mode='section_list' margin=0 only %}
     <script src="{% static '/gallery/js/lightbox_image_link.js' %}"></script>
 {% endblock %}

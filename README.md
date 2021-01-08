@@ -9,13 +9,14 @@
 * BACK-END (PYTHON):
 1. django 3
 2. requests
-3. whitenoise
+3. 
 * FRONT-END (JS, CSS):
 1. Bootstrap 4
 2. Isotope 3
 3. Fancybox 3
 4. Mmenu.JS
-5. Themesberg Neumorphism 
+5. FontAwesome 5
+6. Themesberg Neumorphism 
 
 #### TODO LIST
 * Integrate a lazy image load.
@@ -24,6 +25,7 @@
 * Add tabs and links to the Mmenu.
 * Add the sorting position value number for a pins.
 * Add the size field for a pin model.
+* Add whitenoise support.
 * (BUG) Add an auto filling for the slug field on a board object creation event.
 * (Future) Create the Redis-based caching.
 * (Future) Admin panel customisation (maybe Grapelli).
