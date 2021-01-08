@@ -9,7 +9,7 @@
 * BACK-END (PYTHON):
 1. django 3
 2. requests
-3. 
+3. fontawesome-free
 * FRONT-END (JS, CSS):
 1. Bootstrap 4
 2. Isotope 3
