@@ -1,0 +1,2 @@
+gallery/static/vendor* linguist-vendored
+*.html linguist-detectable=false
