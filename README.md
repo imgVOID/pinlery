@@ -1,12 +1,14 @@
 # PINLERY 
-#### The first media CMS for a Pinterest-based online gallery creation, written in Python Django
+#### The first media CMS for a Pinterest-based online gallery creation, written in Python Django.
 
-If you wanna to join the project in those alpha phase plz write a random issue with your contacts and wishes. It's my main project now, so u're very welcome! 
+### Simple [Pinterest API](https://github.com/imgVOID/pinlery/blob/new/pinlery/init_api.py) web scraping in Python - use Pinterest as a free modern managed imagebase!
 [![Open Source Helpers](https://www.codetriage.com/imgvoid/pinlery/badges/users.svg)](https://www.codetriage.com/imgvoid/pinlery)
+
 
 ### TECHNOLOGIES LIST
 * BACK-END (PYTHON):
-1. Django 3
+1. django 3
+2. requests
 3. whitenoise
 * FRONT-END (JS, CSS):
 1. Bootstrap 4
@@ -15,12 +17,13 @@ If you wanna to join the project in those alpha phase plz write a random issue w
 4. Mmenu.JS
 5. Themesberg Neumorphism 
 
-### TODO LIST
+#### TODO LIST
 * Integrate a lazy image load.
 * Add custom JQuery scrollbar.
 * Make page transition animations.
 * Add tabs and links to the Mmenu.
-* Add the sorting position value number for a pins
+* Add the sorting position value number for a pins.
+* Add the size field for a pin model.
 * (BUG) Add an auto filling for the slug field on a board object creation event.
 * (Future) Create the Redis-based caching.
 * (Future) Admin panel customisation (maybe Grapelli).

@@ -1,18 +1,18 @@
-<script>
-    $(window).on('load', function() {
-        var grid = $(".masonry-grid")
-        function gridMasonry() {
-            if (grid.length) {
-                grid.isotope({
-                    itemSelector: ".masonry-grid-item",
-                    packery: {
-                        columnWidth: "#masonry-grid-sizer",
-                        gutter: 0,
-                    },
-                });
-            }
-        }
-        gridMasonry();
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.0/dist/lazyload.min.js"></script><script>
+
+jQuery(document).ready(function($) {
+    var $win = $(window),
+        $con = $(".masonry-grid"),
+        $imgs = $(".masonry-grid-item");
+
+    $con.isotope();
+
+    $con.on('layoutComplete', function(){
+        $win.trigger("scroll");
     });
 
+    $imgs.lazyload({
+        failure_limit: Math.max($imgs.length - 1, 0)
+    });
+});
 </script>
