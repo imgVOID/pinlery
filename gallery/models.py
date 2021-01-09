@@ -62,13 +62,16 @@ class Section(models.Model):
 #    def slug_custom_split(self):
 #        return self.title.replace('[ ', '').split(' ] ')[0].replace(' ', '-').lower()
 
-    def __str__(self):
-        return "{} | {}".format(self.board.title, self.title)
-
     def save(self, *args, **kwargs):
         value = self.title.replace('[ ', '').split(' ] ')[0]
         self.slug = slugify(value)
         super().save(*args, **kwargs)
+
+    def __str__(self):
+        return "{} | {}".format(
+            self.board.title,
+            self.title
+        )
 
 
 class Pin(models.Model):
@@ -78,17 +81,45 @@ class Pin(models.Model):
         editable=False
     )
     title = models.CharField(
-        max_length=200
+        max_length=200,
+        default=""
     )
     section = models.ForeignKey(
         to=Section,
         on_delete=models.CASCADE
     )
     image_url = models.CharField(
-        max_length=200
+        max_length=200,
+        default=""
+    )
+    height = models.PositiveIntegerField(
+        default=0
+    )
+    width = models.PositiveIntegerField(
+        default=0
     )
     small_image_url = models.CharField(
-        max_length=200
+        max_length=200,
+        default=""
+    )
+    height_s = models.PositiveIntegerField(
+        default=0
+    )
+    width_s = models.PositiveIntegerField(
+        default=0
+    )
+    medium_image_url = models.CharField(
+        max_length=200,
+        default=""
+    )
+    height_m = models.PositiveIntegerField(
+        default=0
+    )
+    width_m = models.PositiveIntegerField(
+        default=0
+    )
+    sort_position = models.PositiveIntegerField(
+        default=0
     )
     color = models.CharField(
         max_length=8,
@@ -96,7 +127,11 @@ class Pin(models.Model):
     )
 
     def __str__(self):
-        return self.title
+        return "{} | {} | {}".format(
+            self.section.board.title,
+            self.section.title,
+            self.title
+        )
 
 
 class SectionDescription(models.Model):

@@ -84,6 +84,7 @@ def create_pins(request):
     for section in active_sections:
         target_section_id = str(int(section.id_pinterest))
         pins = pinterest.get_section_pins(section_id=target_section_id)
+        counter = 0
         while pins:
             for pin in pins:
                 if len(pin["title"]) < 2 and len(pin["description"]) < 2:
@@ -95,9 +96,20 @@ def create_pins(request):
                 pin_id = int(pin['id'])
                 new_pin = Pin(id_pinterest=pin_id, title=pin_title, section=section,
                               image_url=pin["images"]["orig"]["url"],
-                              small_image_url=pin["images"]["236x"]["url"], color=pin['dominant_color'])
+                              width=pin["images"]["orig"]["width"],
+                              height=pin["images"]["orig"]["height"],
+                              small_image_url=pin["images"]["236x"]["url"],
+                              width_s=pin["images"]["236x"]["width"],
+                              height_s=pin["images"]["236x"]["height"],
+                              medium_image_url=pin["images"]["736x"]["url"],
+                              width_m=pin["images"]["736x"]["width"],
+                              height_m=pin["images"]["736x"]["height"],
+                              color=pin['dominant_color'],
+                              sort_position=counter)
+                counter += 1
                 try:
                     new_pin.save()
                 except IntegrityError:
+                    counter += 1
                     continue
             pins = pinterest.get_section_pins(section_id=target_section_id, reset_bookmark=True)

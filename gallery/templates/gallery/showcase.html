@@ -67,7 +67,8 @@
                            <div class="frame" style="background-color:{{ pin.color }}">
                                <a data-fancybox="{{ section_slug }}" data-type="image" href="{{ pin.image_url }}"
                                   data-caption="{{ pin.title }}" class="imageWrapper">
-                                   <img src="{{ pin.image_url }}" alt="" class="image">
+                                   <img  data-srcset="{{ pin.image_url }}" data-src="{{ pin.image_url }}" alt="" class="image lazy" style="background-repeat: no-repeat;
+  background-size: contain;">
                                </a>
                            </div>
                        </div>
@@ -83,6 +84,29 @@
 {% endblock %}
 
 {% block static_JS %}
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+
+  if ("IntersectionObserver" in window && "IntersectionObserverEntry" in window && "intersectionRatio" in window.IntersectionObserverEntry.prototype) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target;
+          lazyImage.src = lazyImage.dataset.src;
+          lazyImage.srcset = lazyImage.dataset.srcset;
+          lazyImage.classList.remove("lazy");
+          lazyImageObserver.unobserve(lazyImage);
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage);
+    });
+  }
+});
+    </script>
     {% include './partials/imports/import-static-js.html' %}
 {% endblock %}
 

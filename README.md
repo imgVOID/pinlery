@@ -22,18 +22,18 @@
 * Add custom JQuery scrollbar.
 * Make page transition animations.
 * Add tabs and links to the Mmenu.
-* Add the sorting position value number for a pins.
-* Add the size field for a pin model.
 * Add whitenoise support.
 * (BUG) Add an auto filling for the slug field on a board object creation event.
 * (Future) Create the Redis-based caching.
 * (Future) Admin panel customisation (maybe Grapelli).
 ###### DONE
 * ~~Add "scroll to top" button.~~
+* ~~Add the size field for a pin model.~~
 * ~~Add detailed pagination to the top.~~
 * ~~Add fullscreen-default Fancybox mode.~~
 * ~~Integrate Isotope to the Bootstrap 4 grid.~~
 * ~~Migrate from the Macy.JS to the Isotope.~~
 * ~~Add fixed left and right pagination arrows.~~
 * ~~Change Mmenu.JS test data to a dynamic data.~~
+* ~~Add the sorting position value number for a pins.~~
 * ~~(Option) Add pagination arrows to the top showcase's jumbotron.~~
