@@ -3,19 +3,9 @@
 	width: 25%;
 }
 
-.masonry-grid-sizer {
-	width: 25%;
-}
-
-.masonry-grid-item img {
+img {
 	box-sizing: border-box;
 	width: 100%;
-}
-
-.masonry-grid {
-    margin: 0 auto;
-    max-width: 80%;
-    padding: 0;
 }
 
 @media handheld,

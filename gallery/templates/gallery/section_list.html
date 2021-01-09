@@ -15,10 +15,12 @@
 
 <! -- main -->
 {% block content %}
-        <div class="masonry-grid">
+    <div class="container-fluid">
+        <div class="masonry-grid row-cols-lg-2 row-cols-md-2 row-cols-xs-1">
             {% if section_list %}
                 {% for section in section_list %}
-                    <div class="masonry-grid-item">
+
+                    <div class="masonry-grid-item col-lg-3 col-md-3 col-xs-11">
                         <div class="border border-light card bg-primary bg-1 shadow">
                             <div class="text-black rounded text-center p-3 mt-4">
                                 <a class="" href="{% url 'showcase' section.slug %}">
@@ -34,7 +36,7 @@
                                         "caption":"<a href=\"{% url 'showcase' section.slug %}\">{{ section.title }}<br>Touch to enter the entire collection!</a>",
                                         "src":"{{ pin.image_url }}", "link":"{% url 'showcase' section.slug %}", "clickContent" : false, "idleTime": false,
                                         "buttons": ["slideShow","thumbs","close"]}'>
-                                            <img src="{{ pin.small_image_url }}" alt="" class="shadow-lg rounded d-block">
+                                            <img src="{{ pin.small_image_url }}" alt="" class="image shadow-lg rounded d-block">
                                         </a>
                                     </div>
                                 {% endfor %}
@@ -65,6 +67,7 @@
                 {% endfor %}
             {% endif %}
         </div>
+        </div>
 {% endblock %}
 
 {% block menu %}
@@ -77,7 +80,7 @@
 
 {% block page_scripts %}
     {% include './partials/scripts/script_init_header.html' %}
-    {% include './partials/scripts/script_init_grid.html' with mode='section_list' margin=0 only %}
+    {% include './partials/scripts/script_init_grid.html' %}
     <script src="{% static '/gallery/js/lightbox_image_link.js' %}"></script>
 {% endblock %}
 

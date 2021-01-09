@@ -57,11 +57,11 @@
             </ul>
         {% endif %}
         </header>
-    <div class="container container-masonry">
-        <div class="masonry-grid row">
-           <div id="masonry-grid-sizer" class=" col-xs-11 col-md-6 col-lg-6"></div>
+
+    <div class="container-fluid container-masonry">
+        <div class="masonry-grid flex-row row-cols-lg-3 row-cols-md-2 row-cols-xs-1">
            {% for pin in pins %}
-               <div class="masonry-grid-item col-xs-11 col-md-6 col-lg-6" >
+               <div class="masonry-grid-item col-xs-11 col-md-6 col-lg-4" >
                    <div class="item shadow-soft border-0 rounded-0 m-0 p-0">
                            <div class="frame" style="background-color:{{ pin.color }}">
                                <a data-fancybox="{{ section_slug }}"
@@ -90,14 +90,11 @@
 {% endblock %}
 
 {% block static_JS %}
-    <script>
 
-    </script>
     {% include './partials/imports/import-static-js.html' %}
 {% endblock %}
 
 {% block page_scripts %}
-<!-- grid -->
     {% include './partials/scripts/script_init_header.html' %}
     {% include './partials/scripts/script_init_grid.html' with mode='showcase' only %}
     {% include './partials/scripts/script_init_fancybox.html' with mode='fullscreen' section_slug=section_slug only %}
