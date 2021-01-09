@@ -80,7 +80,6 @@
 
 {% block page_scripts %}
     {% include './partials/scripts/script_init_header.html' %}
-    {% include './partials/scripts/script_init_grid.html' %}
-    <script src="{% static '/gallery/js/lightbox_image_link.js' %}"></script>
+    {% include './partials/scripts/script_init_fancybox.html' with mode='section_list' section_slug='' only %}
 {% endblock %}
 
