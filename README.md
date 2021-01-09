@@ -18,9 +18,9 @@
 6. Themesberg Neumorphism 
 
 #### TODO LIST
-* Integrate a lazy image load.
+* 
 * Add custom JQuery scrollbar.
-* Make page transition animations.
+* Add page transition animations.
 * Add tabs and links to the Mmenu.
 * Add whitenoise support.
 * (BUG) Add an auto filling for the slug field on a board object creation event.
@@ -28,6 +28,7 @@
 * (Future) Admin panel customisation (maybe Grapelli).
 ###### DONE
 * ~~Add "scroll to top" button.~~
+* ~~Integrate a lazy image load.~~
 * ~~Add the size field for a pin model.~~
 * ~~Add detailed pagination to the top.~~
 * ~~Add fullscreen-default Fancybox mode.~~

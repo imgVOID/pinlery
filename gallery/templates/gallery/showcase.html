@@ -62,17 +62,23 @@
            <div id="masonry-grid-sizer" class=" col-xs-11 col-md-6 col-lg-6"></div>
            {% for pin in pins %}
                <div class="masonry-grid-item col-xs-11 col-md-6 col-lg-6" >
-                   <div class="itemContent">
-                       <div class="item shadow-soft border-0 rounded-0 m-0 p-0">
+                   <div class="item shadow-soft border-0 rounded-0 m-0 p-0">
                            <div class="frame" style="background-color:{{ pin.color }}">
-                               <a data-fancybox="{{ section_slug }}" data-type="image" href="{{ pin.image_url }}"
-                                  data-caption="{{ pin.title }}" class="imageWrapper">
-                                   <img  data-srcset="{{ pin.image_url }}" data-src="{{ pin.image_url }}" alt="" class="image lazy" style="background-repeat: no-repeat;
-  background-size: contain;">
+                               <a data-fancybox="{{ section_slug }}"
+                                  data-type="image"
+                                  href="{{ pin.image_url }}"
+                                  data-caption="{{ pin.title }}"
+                                  class="imageWrapper">
+                                   <img src="{{ pin.small_image_url }}"
+                                        data-srcset="{{ pin.medium_image_url }}"
+                                        width="{{ pin.width_m }}"
+                                        height ="{{ pin.height_m }}"
+                                        alt="{{ pin.title }}"
+                                        class="image lazy d-block"
+                                        style="color: white"/>
                                </a>
                            </div>
                        </div>
-                   </div>
                </div>
            {% endfor %}
         </div>
@@ -85,35 +91,15 @@
 
 {% block static_JS %}
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-  var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
 
-  if ("IntersectionObserver" in window && "IntersectionObserverEntry" in window && "intersectionRatio" in window.IntersectionObserverEntry.prototype) {
-    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          let lazyImage = entry.target;
-          lazyImage.src = lazyImage.dataset.src;
-          lazyImage.srcset = lazyImage.dataset.srcset;
-          lazyImage.classList.remove("lazy");
-          lazyImageObserver.unobserve(lazyImage);
-        }
-      });
-    });
-
-    lazyImages.forEach(function(lazyImage) {
-      lazyImageObserver.observe(lazyImage);
-    });
-  }
-});
     </script>
     {% include './partials/imports/import-static-js.html' %}
 {% endblock %}
 
 {% block page_scripts %}
 <!-- grid -->
-{% include './partials/scripts/script_init_header.html' %}
-{% include './partials/scripts/script_init_grid.html' with mode='showcase' only %}
-{% include './partials/scripts/script_init_fancybox.html' with mode='fullscreen' section_slug=section_slug only %}
+    {% include './partials/scripts/script_init_header.html' %}
+    {% include './partials/scripts/script_init_grid.html' with mode='showcase' only %}
+    {% include './partials/scripts/script_init_fancybox.html' with mode='fullscreen' section_slug=section_slug only %}
 {% endblock %}
 
