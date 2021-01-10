@@ -10,10 +10,8 @@
 
 ### INSTALLATION
 1. `git clone https://github.com/imgVOID/pinlery.git`
-2. `virtualenv env --no-site-packages`
-3. `source env/bin/activate`
+2. Activate your virtual environment
 2. `pip install -r requirements.txt`
-3. Create secrets.sh `export SECRET_KEY='<secret_key>'` 
 3. Configure your database in settings.py
 3. `python manage.py migrate`
 4. `python manage.py createsuperuser`
