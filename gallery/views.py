@@ -59,6 +59,7 @@ def create_boards(request):
                 continue
         boards = pinterest.get_user_boards()
 
+
 def create_sections(request):
     from pinlery.init_api import Pinterest
     pinterest = Pinterest()

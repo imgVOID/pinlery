@@ -63,22 +63,22 @@
            {% for pin in pins %}
                <div class="masonry-grid-item col-xs-11 col-md-6 col-lg-4" >
                    <div class="item shadow-soft border-0 rounded-0 m-0 p-0">
-                           <div class="frame" style="background-color:{{ pin.color }}">
-                               <a data-fancybox="{{ section_slug }}"
-                                  data-type="image"
-                                  href="{{ pin.image_url }}"
-                                  data-caption="{{ pin.title }}"
-                                  class="imageWrapper">
-                                   <img src="{{ pin.small_image_url }}"
-                                        data-srcset="{{ pin.medium_image_url }}"
-                                        width="{{ pin.width_m }}"
-                                        height ="{{ pin.height_m }}"
-                                        alt="{{ pin.title }}"
-                                        class="image lazy d-block"
-                                        style="color: white"/>
-                               </a>
-                           </div>
+                       <div class="frame" style="background-color:{{ pin.color }}">
+                           <a data-fancybox="{{ section_slug }}"
+                              data-type="image"
+                              href="{{ pin.image_url }}"
+                              data-caption="{{ pin.title }}"
+                              class="imageWrapper">
+                               <img src="{{ pin.small_image_url }}"
+                                    data-srcset="{{ pin.medium_image_url }}"
+                                    width="{{ pin.width_m }}"
+                                    height ="{{ pin.height_m }}"
+                                    alt="{{ pin.title }}"
+                                    class="image lazy d-block"
+                                    style="color: white"/>
+                           </a>
                        </div>
+                   </div>
                </div>
            {% endfor %}
         </div>
