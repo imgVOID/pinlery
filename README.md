@@ -5,8 +5,23 @@
 
 ### FEATURES
 * Fast Pinterest to Django model object convertor. Synchronise your website media with a Pinterest board, section or profile - it's a fully automatic and easy customisable process!
-* Ready-to-use beautiful gallery website app on Python Django. Also, Pinlery using many well-documented modern Front End technologies like the [IntersectionObserver lazy load](https://github.com/imgVOID/pinlery/blob/new/gallery/static/gallery/js/lazy_loader.js) and already configured Isotope, Fancybox, Mmenu plugins.
+* Ready-to-use beautiful gallery website Django app. Also, Pinlery using many well-documented modern Front End technologies like the [IntersectionObserver lazy load](https://github.com/imgVOID/pinlery/blob/new/gallery/static/gallery/js/lazy_loader.js) and already configured Isotope, Fancybox, Mmenu plugins.
 * Stylish fancy trendy Bootstrap 4 Neumorphism templates and theme for FREE!
+
+### INSTALLATION
+1. `git clone https://github.com/imgVOID/pinlery.git`
+2. `virtualenv env --no-site-packages`
+3. `source env/bin/activate`
+2. `pip install -r requirements.txt`
+3. Create secrets.sh `export SECRET_KEY='<secret_key>'` 
+3. Configure your database in settings.py
+3. `python manage.py migrate`
+4. `python manage.py createsuperuser`
+5. `python manage.py makemigrations gallery`
+7. `python manage.py migrate`
+8. `python manage.py runserver`
+9. All done! Now visit your `localhost:8000/gallery/`!
+
 
 #### TECHNOLOGIES LIST
 * BACK-END (PYTHON):
@@ -19,7 +34,8 @@
 3. Fancybox 3
 4. Mmenu.JS
 5. FontAwesome 5
-6. Themesberg Neumorphism 
+6. Themesberg Neumorphism
+
 
 #### TODO LIST
 * Add custom JQuery scrollbar.
