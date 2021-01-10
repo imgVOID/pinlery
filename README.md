@@ -23,7 +23,7 @@
 9. All done! Now visit your `localhost:8000/gallery/`!
 
 
-#### TECHNOLOGIES LIST
+### TECHNOLOGIES LIST
 * BACK-END (PYTHON):
 1. django 3
 2. requests
@@ -37,7 +37,7 @@
 6. Themesberg Neumorphism
 
 
-#### TODO LIST
+### TODO LIST
 * Add custom JQuery scrollbar.
 * Add page transition animations.
 * Add tabs and links to the Mmenu.
