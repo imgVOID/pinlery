@@ -16,50 +16,51 @@
 
 <! -- main -->
 {% block content %}
-    <header class="text-center jumbotron bg-primary  m-0">
-        <h1 class="badge badge-pill badge-primary text-gray text-uppercase"><b> {{ section_title.1 }}</b></h1>
-        <h1>
-            {{ section_title.0 }}
-        </h1>
+    <div class="container">
+        <div class="flex-row">
+            <div class="text-center jumbotron bg-primary  m-0">
+                <h1 class="badge badge-pill badge-primary text-gray text-uppercase"><b> {{ section_title.1 }}</b></h1>
+                <h1>
+                    {{ section_title.0 }}
+                </h1>
 
-        {% if pins.paginator.num_pages > 1  %}
-            <ul class="pagination circle-pagination pagination-sm justify-content-center">
-                {% if pins.number > paginate_limit.0 %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page=1">
-                            <i class="fas fa-angle-double-left"></i>
-                        </a>
-                    </li>
+                {% if pins.paginator.num_pages > 1  %}
+                    <ul class="pagination circle-pagination pagination-sm justify-content-center">
+                        {% if pins.number > paginate_limit.0 %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page=1">
+                                    <i class="fas fa-angle-double-left"></i>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% for i in pins.paginator.page_range %}
+                            {% if pins.number == i %}
+                                <li class="page-item active disabled">
+                                    <a class="page-link  rounded" href="#">
+                                        <b>{{ i }}</b>
+                                        <span class="sr-only">current</span>
+                                    </a>
+                                </li>
+                            {% elif i > pins.number|add:'-3' and i < pins.number|add:'3' %}
+                                <li class="page-item">
+                                    <a class="page-link  rounded" href="?page={{ i }}">
+                                        <b>{{ i }}</b>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if pins.number <= pins.paginator.num_pages|add:paginate_limit.1 %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ pins.paginator.num_pages }}">
+                                        <i class="fas fa-angle-double-right"></i>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
                 {% endif %}
-                {% for i in pins.paginator.page_range %}
-                    {% if pins.number == i %}
-                        <li class="page-item active disabled">
-                            <a class="page-link  rounded" href="#">
-                                <b>{{ i }}</b>
-                                <span class="sr-only">current</span>
-                            </a>
-                        </li>
-                    {% elif i > pins.number|add:'-3' and i < pins.number|add:'3' %}
-                        <li class="page-item">
-                            <a class="page-link  rounded" href="?page={{ i }}">
-                                <b>{{ i }}</b>
-                            </a>
-                        </li>
-                    {% endif %}
-                {% endfor %}
-                {% if pins.number <= pins.paginator.num_pages|add:paginate_limit.1 %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{ pins.paginator.num_pages }}">
-                                <i class="fas fa-angle-double-right"></i>
-                        </a>
-                    </li>
-                {% endif %}
-            </ul>
-        {% endif %}
-    </header>
-
-    <div class="container-fluid container-masonry">
-        <div class="masonry-grid row row-cols-lg-3 row-cols-md-2 row-cols-xs-1">
+            </div>
+        </div>
+        <div class="masonry-grid flex-row row-cols-lg-3 row-cols-md-2 row-cols-xs-1">
            {% for pin in pins %}
                <div class="masonry-grid-item col-xs-11 col-md-6 col-lg-4" >
                    <div class="item shadow-soft border-0 rounded-0 m-0 p-0">
