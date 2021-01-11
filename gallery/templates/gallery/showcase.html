@@ -7,7 +7,7 @@
 
 {% block page_styling %}
     <link rel="stylesheet" type="text/css" href="{% static '/gallery/css/fancybox_animation.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static '/gallery/css/skeuomorphic_frame.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/gallery/css/pages/skeuomorphic_frame.css' %}">
 {% endblock %}
 
 {% block navigation %}
@@ -56,7 +56,7 @@
                 {% endif %}
             </ul>
         {% endif %}
-        </header>
+    </header>
 
     <div class="container-fluid container-masonry">
         <div class="masonry-grid flex-row row-cols-lg-3 row-cols-md-2 row-cols-xs-1">
@@ -90,7 +90,6 @@
 {% endblock %}
 
 {% block static_JS %}
-
     {% include './partials/imports/import-static-js.html' %}
 {% endblock %}
 

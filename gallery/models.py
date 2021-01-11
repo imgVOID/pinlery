@@ -151,4 +151,3 @@ class SectionDescription(models.Model):
             return self.section.title
         except AttributeError:
             return self.description[0:100]
-

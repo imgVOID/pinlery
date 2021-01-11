@@ -1,0 +1,9 @@
+
+.masonry-grid-item {
+	padding-bottom: 2rem !important;
+}
+
+img {
+	box-sizing: border-box;
+	width: 100%;
+}

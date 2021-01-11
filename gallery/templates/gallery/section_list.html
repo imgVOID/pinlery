@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block page_styling %}
-    <link rel="stylesheet" type="text/css" href="{% static '/gallery/css/grid/grid_section_list.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/gallery/css/pages/grid_section_list.css' %}">
 {% endblock %}
 
 {% block navigation %}
@@ -16,10 +16,9 @@
 <! -- main -->
 {% block content %}
     <div class="container-fluid">
-        <div class="masonry-grid row-cols-lg-2 row-cols-md-2 row-cols-xs-1">
+        <div class="masonry-grid flex-row row-cols-lg-2 row-cols-md-2 row-cols-xs-1">
             {% if section_list %}
                 {% for section in section_list %}
-
                     <div class="masonry-grid-item col-lg-3 col-md-3 col-xs-11">
                         <div class="border border-light card bg-primary bg-1 shadow">
                             <div class="text-black rounded text-center p-3 mt-4">
@@ -28,7 +27,6 @@
                                     <span class="text-gray m-1">{{ section.title_custom_split.1 }}</span>
                                 </a>
                             </div>
-
                             <div class="row mr-4 ml-4 p-1 mb-3">
                                 {% for pin in section.pin_set.all|slice:":2" %}
                                     <div class="col-6">
@@ -79,6 +77,6 @@
 {% endblock %}
 
 {% block page_scripts %}
-    {% include './partials/scripts/script_init_fancybox.html' with mode='section_list' section_slug='' only %}
+    {% include './partials/scripts/script_init_fancybox.html' with mode='section_list' only %}
 {% endblock %}
 

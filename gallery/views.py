@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
 from django.db import IntegrityError
+from django.contrib import messages
 import os
 from django.shortcuts import redirect
 from django.views import generic
 from django.core.paginator import Paginator
-from .models import Board, Section, Pin
+from .models import Board, Section, Pin, Profile
 
 def showcase(request, section_slug):
     section_list = Section.objects.filter(active=True)
@@ -47,7 +48,11 @@ class section_list(generic.ListView):
 def create_boards(request):
     # TODO remove hardcoded credential
     from pinlery.init_api import Pinterest
-    pinterest = Pinterest(username='nennertrennen')
+    username = ""
+    if username == "":
+        raise ValueError('No username has been founded')
+    else:
+        pinterest = Pinterest(username='')
     boards = pinterest.get_user_boards()
     while boards:
         for board in boards:

@@ -2,12 +2,12 @@
 {{ mode|json_script:"mode" }}
 <script>
     $(function() {
-        let section_slug = JSON.parse(document.getElementById('section_slug').textContent);
         let mode = JSON.parse(document.getElementById('mode').textContent);
-        let section = '[data-fancybox="' + section_slug + '"]';
         let autoStart = mode === 'fullscreen';
 
         if (mode === 'fullscreen'){
+            let section_slug = JSON.parse(document.getElementById('section_slug').textContent);
+            let section = '[data-fancybox="' + section_slug + '"]';
             $(section).fancybox({
                 fullScreen : {
                     autoStart : autoStart,

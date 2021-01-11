@@ -4,9 +4,9 @@
 [![Open Source Helpers](https://www.codetriage.com/imgvoid/pinlery/badges/users.svg)](https://www.codetriage.com/imgvoid/pinlery)
 
 ### FEATURES
-* Fast Pinterest to Django model object convertor. Synchronise your website media with a Pinterest board, section or profile - it's a fully automatic and easy customisable process!
-* Ready-to-use beautiful gallery website Django app. Also, Pinlery using many well-documented modern Front End technologies like the [IntersectionObserver lazy load](https://github.com/imgVOID/pinlery/blob/new/gallery/static/gallery/js/lazy_loader.js) and already configured Isotope, Fancybox, Mmenu plugins.
-* Stylish fancy trendy Bootstrap 4 Neumorphism templates and theme for FREE!
+* Fast Pinterest to Django model object convertor. Synchronise your website media with a Pinterest board, section or profile - it's a fully automatic and easy customisable process.
+* Ready-to-use Django gallery website app. Also, Pinlery is using some well-documented modern Front End technologies like the [IntersectionObserver lazy load](https://github.com/imgVOID/pinlery/blob/new/gallery/static/gallery/js/lazy_loader.js) and an already configured Bootstrap 4, Isotope, Fancybox, Mmenu plugins.
+* Stylish fancy trendy  neumorphism templates and theme for FREE!
 
 ### INSTALLATION
 1. `git clone https://github.com/imgVOID/pinlery.git`
