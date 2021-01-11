@@ -6,7 +6,7 @@ import os
 from django.shortcuts import redirect
 from django.views import generic
 from django.core.paginator import Paginator
-from .models import Board, Section, Pin, Profile
+from .models import Board, Section, Pin
 
 def showcase(request, section_slug):
     section_list = Section.objects.filter(active=True)
