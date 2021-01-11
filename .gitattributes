@@ -1,3 +1,0 @@
-/gallery/static/vendor/* linguist-vendored
-/gallery/static/themes/* linguist-vendored
-*.html linguist-detectable=false
