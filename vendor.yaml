@@ -1,2 +1,3 @@
 pinlery/gallery/static/vendor/* linguist-vendored
 pinlery/gallery/static/themes/* linguist-vendored
+pinlery/gallery/templates/gallery/partials/* linguist-vendored
