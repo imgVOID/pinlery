@@ -8,6 +8,7 @@ from django.views import generic
 from django.core.paginator import Paginator
 from .models import Board, Section, Pin
 
+
 def showcase(request, section_slug):
     section_list = Section.objects.filter(active=True)
     section = section_list.get(slug=section_slug)
@@ -18,6 +19,7 @@ def showcase(request, section_slug):
     page = request.GET.get('page')
     pins = paginator.get_page(page)
     paginate_limit = [3, -3]
+    # specific formatting
     title_custom_split = section.title.replace('[ ', '').split(' ] ')
     slug_custom_split = section.title.replace('[ ', '').split(' ] ')[0].replace(' ', '-').lower()
     menu_description = '{} {} {}'.format('Artworks by', title_custom_split[0], 'on')
@@ -35,7 +37,7 @@ class section_list(generic.ListView):
     model = Section
     queryset = Section.objects.filter(active=True)
     context_object_name = 'section_list'
-
+    template_name = "gallery/pages/section_list.html"
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
