@@ -36,10 +36,14 @@
 
 
 ### TODO LIST
+* Add whitenoise support.
 * Add custom JQuery scrollbar.
+* Remove hardcoded datasource.
 * Add page transition animations.
 * Add tabs and links to the Mmenu.
-* Add whitenoise support.
+* Add a delete function to the synchronisation.
+* Add the jumbotron styling on the showcase page.
+* Add animation duration to the grid items on the page load event.
 * (Future) Create the Redis-based caching.
 * (Future) Admin panel customisation (maybe Grapelli).
 ###### DONE
