@@ -4,40 +4,43 @@ from django.db import IntegrityError
 from django.contrib import messages
 import os
 from django.shortcuts import redirect
-from django.views import generic
+from django.views.generic import ListView
+from django.views.generic import TemplateView
 from django.core.paginator import Paginator
+from django.shortcuts import get_object_or_404
 from .models import Board, Section, Pin
 
 
-def showcase(request, section_slug):
-    section_list = Section.objects.filter(active=True)
-    section = section_list.get(slug=section_slug)
-    section_list = section_list.exclude(slug=section_slug)
-    section_id = int(section.id_pinterest)
-    pins = Pin.objects.filter(section__id_pinterest=section_id)
-    paginator = Paginator(pins, 15)
-    page = request.GET.get('page')
-    pins = paginator.get_page(page)
-    paginate_limit = [3, -3]
-    # specific formatting
-    title_custom_split = section.title.replace('[ ', '').split(' ] ')
-    slug_custom_split = section.title.replace('[ ', '').split(' ] ')[0].replace(' ', '-').lower()
-    menu_description = '{} {} {}'.format('Artworks by', title_custom_split[0], 'on')
-    return render(request, 'gallery/pages/showcase.html', {
-        'section_list': section_list,
-        'pins': pins,
-        'section_title': title_custom_split,
-        'section_slug': slug_custom_split,
-        'menu_description': menu_description,
-        'paginate_limit': paginate_limit
-    })
+class pin_list(ListView):
+    model = Pin
+    template_name = "gallery/pages/showcase.html"
+    active_sections = Section.objects.filter(active=True)
+    context_object_name = 'pins'
+    paginate_by = 2
+
+    def get_queryset(self):
+        self.section = get_object_or_404(Section, slug=self.kwargs.get("section_slug"))
+        pins = Pin.objects.filter(section=self.section)
+        self.pins_count = Pin.objects.filter(section=self.section).count()
+        return pins
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in the publisher
+        context['menu_description'] = '{} {} {}'.format('About', self.pins_count, 'items')
+        context['active_sections'] = self.active_sections.exclude(slug=self.section.slug)
+        context['paginate_limit'] = [3, -3]
+        context['section'] = self.section
+        return context
 
 
-class section_list(generic.ListView):
+class section_list(ListView):
     model = Section
     queryset = Section.objects.filter(active=True)
     context_object_name = 'section_list'
     template_name = "gallery/pages/section_list.html"
+
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
@@ -48,7 +51,6 @@ class section_list(generic.ListView):
 
 
 def create_boards(request):
-    # TODO remove hardcoded credential
     from pinlery.init_api import Pinterest
     username = ""
     if username == "":
