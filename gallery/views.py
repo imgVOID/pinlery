@@ -21,7 +21,7 @@ def showcase(request, section_slug):
     title_custom_split = section.title.replace('[ ', '').split(' ] ')
     slug_custom_split = section.title.replace('[ ', '').split(' ] ')[0].replace(' ', '-').lower()
     menu_description = '{} {} {}'.format('Artworks by', title_custom_split[0], 'on')
-    return render(request, 'gallery/showcase.html', {
+    return render(request, 'gallery/pages/showcase.html', {
         'section_list': section_list,
         'pins': pins,
         'section_title': title_custom_split,
@@ -119,3 +119,4 @@ def create_pins(request):
                     counter += 1
                     continue
             pins = pinterest.get_section_pins(section_id=target_section_id, reset_bookmark=True)
+

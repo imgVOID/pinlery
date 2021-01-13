@@ -5,7 +5,7 @@
     {% include 'gallery/partials/imports/import-static-css.html' %}
 {% endblock %}
 
-{% block page_styling %}
+{% block page_styles %}
     <link rel="stylesheet" type="text/css" href="{% static '/gallery/css/fancybox_animation.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static '/gallery/css/pages/skeuomorphic_frame.css' %}">
 {% endblock %}
@@ -14,7 +14,7 @@
     {% include 'gallery/partials/elements/nav-bar.html' %}
 {% endblock %}
 
-<! -- main -->
+<!-- main -->
 {% block content %}
     <div class="container">
         <div class="flex-row">
@@ -36,14 +36,14 @@
                         {% for i in pins.paginator.page_range %}
                             {% if pins.number == i %}
                                 <li class="page-item active disabled">
-                                    <a class="page-link  rounded" href="#">
+                                    <a class="page-link rounded" href="#">
                                         <b>{{ i }}</b>
                                         <span class="sr-only">current</span>
                                     </a>
                                 </li>
                             {% elif i > pins.number|add:'-3' and i < pins.number|add:'3' %}
                                 <li class="page-item">
-                                    <a class="page-link  rounded" href="?page={{ i }}">
+                                    <a class="page-link rounded" href="?page={{ i }}">
                                         <b>{{ i }}</b>
                                     </a>
                                 </li>
