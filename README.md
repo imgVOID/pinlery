@@ -46,6 +46,7 @@
 * Add animation duration to the grid items on the page load event.
 * (Future) Create the Redis-based caching.
 * (Future) Admin panel customisation (maybe Grapelli).
+* (Future) Isotope, Packery, Masonry, Macy.JS integration.
 ###### DONE
 * ~~Add "scroll to top" button.~~
 * ~~Integrate a lazy image load.~~
@@ -53,6 +54,7 @@
 * ~~Add detailed pagination to the top.~~
 * ~~Add fullscreen-default Fancybox mode.~~
 * ~~Integrate Isotope to the Bootstrap 4 grid.~~
+* ~~Migrate from the Isotope to the Macy.JS~~
 * ~~Migrate from the Macy.JS to the Isotope.~~
 * ~~Add fixed left and right pagination arrows.~~
 * ~~Change Mmenu.JS test data to a dynamic data.~~

@@ -1,40 +1,40 @@
 {{ section_slug|json_script:"section_slug" }}
 {{ mode|json_script:"mode" }}
 <script>
-    $(function() {
-        let mode = JSON.parse(document.getElementById('mode').textContent);
-        let autoStart = mode === 'fullscreen';
+        document.addEventListener("DOMContentLoaded", function () {
+            let mode = JSON.parse(document.getElementById('mode').textContent);
+            let autoStart = mode === 'fullscreen';
 
-        if (mode === 'fullscreen'){
-            let section_slug = JSON.parse(document.getElementById('section_slug').textContent);
-            let section = '[data-fancybox="' + section_slug + '"]';
-            $(section).fancybox({
-                fullScreen : {
-                    autoStart : autoStart,
-                },
-                buttons: ["share","slideShow","close"],
-                idleTime: false,
-                arrows: false,
-                protect: true,
-            });
+            if (mode === 'fullscreen') {
+                let section_slug = JSON.parse(document.getElementById('section_slug').textContent);
+                let section = '[data-fancybox="' + section_slug + '"]';
+                $(section).fancybox({
+                    fullScreen: {
+                        autoStart: autoStart,
+                    },
+                    buttons: ["share", "slideShow", "close"],
+                    idleTime: false,
+                    arrows: false,
+                    protect: true,
+                });
 
-            $(document).on('afterShow.fb', function( e, instance, slide ) {
-                document.body.style.cursor = 'grab';
-            });
+                $(document).on('afterShow.fb', function (e, instance, slide) {
+                    document.body.style.cursor = 'grab';
+                });
 
-            $(document).on('afterClose.fb', function( e, instance, slide ) {
-                document.body.style.cursor = 'default';
-            });
+                $(document).on('afterClose.fb', function (e, instance, slide) {
+                    document.body.style.cursor = 'default';
+                });
 
-        } else if (mode === 'section_list'){
-            $(document).on('afterShow.fb', function( e, instance, slide ) {
-                $(".fancybox-image").wrap('<a href="' + slide.opts.link + '" />');
-                document.body.style.cursor = 'grab';
-            });
-            $(document).on('afterClose.fb', function( e, instance, slide ) {
-                document.body.style.cursor = 'default';
-            });
-        }
-    });
+            } else if (mode === 'section_list') {
+                $(document).on('afterShow.fb', function (e, instance, slide) {
+                    $(".fancybox-image").wrap('<a href="' + slide.opts.link + '" />');
+                    document.body.style.cursor = 'grab';
+                });
+                $(document).on('afterClose.fb', function (e, instance, slide) {
+                    document.body.style.cursor = 'default';
+                });
+            }
+        });
 </script>
 

@@ -16,7 +16,7 @@ class pin_list(ListView):
     template_name = "gallery/pages/showcase.html"
     active_sections = Section.objects.filter(active=True)
     context_object_name = 'pins'
-    paginate_by = 2
+    paginate_by = 9
 
     def get_queryset(self):
         self.section = get_object_or_404(Section, slug=self.kwargs.get("section_slug"))

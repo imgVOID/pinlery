@@ -18,18 +18,18 @@
    </div>
 </nav>
 
-{% if pins.paginator.num_pages > 1 %}
+{% if page_obj.paginator.num_pages > 1 %}
     <nav class="mh-head fixed-bottom paginationArrows mb-2" id="pagination" style="background-color: rgba(0,0,0,0);">
         <div class="mh-btns-left mb-2">
-            {% if pins.has_previous %}
-             <a class="nav-link-arrow page-link btn btn-icon btn-icon-only rounded text-gray" href="?page={{ pins.previous_page_number }}">
+            {% if page_obj.has_previous %}
+             <a class="nav-link-arrow page-link btn btn-icon btn-icon-only rounded text-gray" href="?page={{ page_obj.previous_page_number }}">
                  <i class="fas fa-arrow-left"></i>
              </a>
             {% endif %}
         </div>
         <div class=" mh-btns-right mb-2">
-            {% if pins.has_next %}
-             <a class="nav-link-arrow page-link btn btn-icon btn-icon-only text-gray" href="?page={{ pins.next_page_number }}">
+            {% if page_obj.has_next %}
+             <a class="nav-link-arrow page-link btn btn-icon btn-icon-only text-gray" href="?page={{ page_obj.next_page_number }}">
                  <i class="fas fa-arrow-right"></i>
              </a>
             {% endif %}
