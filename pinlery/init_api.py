@@ -15,6 +15,8 @@ GET_BOARD_SECTIONS = 'https://www.pinterest.com/resource/BoardSectionsResource/g
 
 HOME_PAGE = 'https://www.pinterest.com/'
 
+USER_RESOURCE = 'https://www.pinterest.com/_ngjs/resource/UserResource/get/'
+
 
 class Pinterest:
     def __init__(self, username=''):
@@ -103,6 +105,25 @@ class Pinterest:
 
         pins = [d for d in result['resource_response']['data'] if 'pinner' in d]
         return pins
+
+    def get_user_overview(self, username=None):
+        """
+        :param username target username, if left blank current user is assumed
+        :return python dict describing the pinterest user profile response
+        """
+        if username is None:
+            raise ValueError('No username has been founded')
+
+        options = {
+            "isPrefetch": 'false',
+            "username": username,
+            "field_set_key": "profile"
+        }
+        url = self.build_get(url=USER_RESOURCE, options=options)
+        result = self.get(session=self.http, url=url).json()
+        print(url)
+
+        return result['resource_response']['data']
 
     @staticmethod
     def request(session, method, url):

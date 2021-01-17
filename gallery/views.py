@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.db import IntegrityError
 from django.contrib import messages
 import os
-from django.shortcuts import redirect
 from django.views.generic import ListView
-from django.views.generic import TemplateView
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404
-from .models import Board, Section, Pin
+from .models import Board, Section, Pin, Profile
 
 
 class pin_list(ListView):
@@ -25,9 +23,7 @@ class pin_list(ListView):
         return pins
 
     def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
-        # Add in the publisher
         context['menu_description'] = '{} {} {}'.format('About', self.pins_count, 'items')
         context['active_sections'] = self.active_sections.exclude(slug=self.section.slug)
         context['paginate_limit'] = [3, -3]
@@ -42,31 +38,30 @@ class section_list(ListView):
     template_name = "gallery/pages/section_list.html"
 
     def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         count = context['section_list'].count()
-        # Add in a QuerySet of all the books
         context['menu_description'] = '{} {} {}'.format('There is', count, 'personal art galleries on')
         return context
 
 
 def create_boards(request):
     from pinlery.init_api import Pinterest
-    username = ""
-    if username == "":
-        raise ValueError('No username has been founded')
-    else:
-        pinterest = Pinterest(username='')
-    boards = pinterest.get_user_boards()
-    while boards:
-        for board in boards:
-            target_board_id = int(board['id'])
-            new_board = Board(title=board['name'], id_pinterest=target_board_id)
-            try:
-                new_board.save()
-            except IntegrityError:
-                continue
+    active_users = Profile.objects.filter(active=True)
+    for user in active_users:
+        pinterest = Pinterest(username=user.username)
         boards = pinterest.get_user_boards()
+        while boards:
+            for board in boards:
+                target_board_id = int(board['id'])
+                new_board = Board(title=board['name'],
+                                  user=user,
+                                  id_pinterest=target_board_id)
+                try:
+                    new_board.save()
+                except IntegrityError:
+                    continue
+            boards = pinterest.get_user_boards()
+    return redirect('/admin/gallery/board')
 
 
 def create_sections(request):
@@ -86,6 +81,8 @@ def create_sections(request):
                     continue
             sections = pinterest.get_board_sections(board_id=target_board_id, reset_bookmark=True)
 
+    return redirect('/admin/gallery/section')
+
 
 def create_pins(request):
     from pinlery.init_api import Pinterest
@@ -97,14 +94,9 @@ def create_pins(request):
         counter = 0
         while pins:
             for pin in pins:
-                if len(pin["title"]) < 2 and len(pin["description"]) < 2:
-                    pin_title = "Untitled"
-                elif len(pin["title"]) < 2:
-                    pin_title = pin["description"][0:27]
-                else:
-                    pin_title = pin["title"]
                 pin_id = int(pin['id'])
-                new_pin = Pin(id_pinterest=pin_id, title=pin_title, section=section,
+                new_pin = Pin(id_pinterest=pin_id, title=pin["title"],
+                              description=pin["description"], section=section,
                               image_url=pin["images"]["orig"]["url"],
                               width=pin["images"]["orig"]["width"],
                               height=pin["images"]["orig"]["height"],
@@ -124,3 +116,4 @@ def create_pins(request):
                     continue
             pins = pinterest.get_section_pins(section_id=target_section_id, reset_bookmark=True)
 
+    return redirect('/admin/gallery/pin')

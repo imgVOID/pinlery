@@ -5,7 +5,7 @@
 [![Gitter](https://badges.gitter.im/pinlery/community.svg)](https://gitter.im/pinlery/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 ### FEATURES
 * Fast Pinterest to Django model object convertor. Synchronise your website media with a Pinterest board, section or profile - it's a fully automatic and easy customisable process.
-* Ready-to-use Django gallery website app. Also, Pinlery is using some well-documented modern Front End technologies like the [IntersectionObserver lazy load](https://github.com/imgVOID/pinlery/blob/new/gallery/static/gallery/js/lazy_loader.js) and an already configured Bootstrap 4, Isotope, Fancybox, Mmenu plugins.
+* Ready-to-use Django gallery website app. Also, Pinlery is using some well-documented modern Front End technologies like the [IntersectionObserver lazy load](https://github.com/imgVOID/pinlery/blob/new/gallery/static/gallery/js/lazy_loader.js) and an already configured Bootstrap 4, Shuffle.JS, Fancybox, Mmenu.JS plugins.
 * Stylish fancy trendy  neumorphism templates and theme for FREE!
 
 ### INSTALLATION
@@ -28,7 +28,7 @@
 3. fontawesome-free
 * FRONT-END (JS, CSS):
 1. Bootstrap 4
-2. Isotope 3
+2. Shuffle.JS
 3. Fancybox 3
 4. Mmenu.JS
 5. FontAwesome 5
@@ -38,7 +38,6 @@
 ### TODO LIST
 * Add whitenoise support.
 * Add custom JQuery scrollbar.
-* Remove hardcoded datasource.
 * Add page transition animations.
 * Add tabs and links to the Mmenu.
 * Add a delete function to the synchronisation.
@@ -50,11 +49,12 @@
 ###### DONE
 * ~~Add "scroll to top" button.~~
 * ~~Integrate a lazy image load.~~
+* ~~Remove hardcoded datasource.~~
 * ~~Add the size field for a pin model.~~
 * ~~Add detailed pagination to the top.~~
 * ~~Add fullscreen-default Fancybox mode.~~
 * ~~Integrate Isotope to the Bootstrap 4 grid.~~
-* ~~Migrate from the Isotope to the Macy.JS~~
+* ~~Migrate from the Isotope to the Shuffle.JS.~~
 * ~~Migrate from the Macy.JS to the Isotope.~~
 * ~~Add fixed left and right pagination arrows.~~
 * ~~Change Mmenu.JS test data to a dynamic data.~~
