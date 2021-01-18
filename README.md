@@ -35,4 +35,4 @@
 
 ### [TODO list](https://github.com/imgVOID/pinlery/projects/1?fullscreen=true) on the GitHub Projects
 
-### [License](https://github.com/imgVOID/pinlery/blob/master/LICENSE.md)
+### [LICENSE](https://github.com/imgVOID/pinlery/blob/master/LICENSE.md)
