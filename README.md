@@ -20,8 +20,6 @@
 8. `python manage.py runserver`
 9. All done! Now login via your `localhost:8000/admin/`
 
-### [TODO list](https://github.com/imgVOID/pinlery/projects/1?fullscreen=true) on the GitHub Projects
-
 ### Technologies
 * BACK-END (PYTHON):
 1. django 3
@@ -35,7 +33,6 @@
 5. FontAwesome 5
 6. Themesberg Neumorphism
 
-
-
+### [TODO list](https://github.com/imgVOID/pinlery/projects/1?fullscreen=true) on the GitHub Projects
 
 ### [License](https://github.com/imgVOID/pinlery/blob/master/LICENSE.md)
