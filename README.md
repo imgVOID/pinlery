@@ -20,6 +20,7 @@
 8. `python manage.py runserver`
 9. All done! Now login via your `localhost:8000/admin/`
 
+### [TODO list](https://github.com/imgVOID/pinlery/projects/1?fullscreen=true) on the GitHub Projects
 
 ### Technologies
 * BACK-END (PYTHON):
@@ -35,32 +36,10 @@
 6. Themesberg Neumorphism
 
 
-### TODO list
-Back End:
-* Add whitenoise support.
-* Add a delete function to the synchronisation.
-* (Future) Admin panel customisation (maybe Grapelli).
-* (Future) Create the Redis-based caching. 
-  
-Front End:
-* Add custom JQuery scrollbar.
-* Add page transition animations.
-* Add tabs and links to the Mmenu.
-* Add the jumbotron styling on the showcase page.
-* Add animation duration to the grid items on the page load event.
-* (Future) Isotope, Packery, Masonry, Macy.JS integration.
-###### DONE
-* ~~Add "scroll to top" button.~~
-* ~~Integrate a lazy image load.~~
-* ~~Remove hardcoded datasource.~~
-* ~~Add the size field for a pin model.~~
-* ~~Add detailed pagination to the top.~~
-* ~~Add fullscreen-default Fancybox mode.~~
-* ~~Integrate Isotope to the Bootstrap 4 grid.~~
-* ~~Migrate from the Isotope to the Shuffle.JS.~~
-* ~~Migrate from the Macy.JS to the Isotope.~~
-* ~~Add fixed left and right pagination arrows.~~
-* ~~Change Mmenu.JS test data to a dynamic data.~~
-* ~~Add the sorting position value number for a pins.~~
-* ~~(Option) Add pagination arrows to the top showcase's jumbotron.~~
-* ~~(BUG) Add an auto filling for the slug field on a board object creation event.~~
+
+
+### License
+
+The Pinlery CMS is licensed under the [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) license.
+
+After purchasing the Pinlery CMS is licensed under the [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/) license.
