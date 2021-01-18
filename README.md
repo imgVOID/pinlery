@@ -34,5 +34,3 @@
 6. Themesberg Neumorphism
 
 ### [TODO list](https://github.com/imgVOID/pinlery/projects/1?fullscreen=true) on the GitHub Projects
-
-### [LICENSE](https://github.com/imgVOID/pinlery/blob/master/LICENSE.md)
