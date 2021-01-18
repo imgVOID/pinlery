@@ -100,11 +100,12 @@ class Section(models.Model):
         editable=False
     )
     title = models.CharField(
-        max_length=200
+        max_length=200,
+        default=''
     )
     slug = models.SlugField(
-        default='',
         max_length=200,
+        default=''
     )
     active = models.BooleanField(
         blank=False,
@@ -112,6 +113,7 @@ class Section(models.Model):
     )
     board = models.ForeignKey(
         to=Board,
+        default='',
         on_delete=models.CASCADE
     )
 
