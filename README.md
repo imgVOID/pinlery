@@ -33,4 +33,4 @@
 5. FontAwesome 5
 6. Themesberg Neumorphism
 
-### [TODO list](https://github.com/imgVOID/pinlery/projects/1?fullscreen=true) on the GitHub Projects
+### [TODO list](https://github.com/imgVOID/pinlery/projects/1?fullscreen=true)
