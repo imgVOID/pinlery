@@ -6,6 +6,7 @@ import os
 from django.views.generic import ListView
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import user_passes_test
 from .models import Board, Section, Pin, Profile
 
 
@@ -36,6 +37,7 @@ class section_list(ListView):
     queryset = Section.objects.filter(active=True)
     context_object_name = 'section_list'
     template_name = "gallery/pages/section_list.html"
+    paginate_by = 6
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -44,6 +46,7 @@ class section_list(ListView):
         return context
 
 
+@user_passes_test(lambda u: u.is_superuser)
 def create_boards(request):
     from pinlery.init_api import Pinterest
     active_users = Profile.objects.filter(active=True)
@@ -64,6 +67,7 @@ def create_boards(request):
     return redirect('/admin/gallery/board')
 
 
+@user_passes_test(lambda u: u.is_superuser)
 def create_sections(request):
     from pinlery.init_api import Pinterest
     pinterest = Pinterest()
@@ -84,6 +88,7 @@ def create_sections(request):
     return redirect('/admin/gallery/section')
 
 
+@user_passes_test(lambda u: u.is_superuser)
 def create_pins(request):
     from pinlery.init_api import Pinterest
     pinterest = Pinterest()
@@ -95,8 +100,10 @@ def create_pins(request):
         while pins:
             for pin in pins:
                 pin_id = int(pin['id'])
-                new_pin = Pin(id_pinterest=pin_id, title=pin["title"],
-                              description=pin["description"], section=section,
+                new_pin = Pin(id_pinterest=pin_id,
+                              title=pin["title"],
+                              description=pin["description"],
+                              section=section,
                               image_url=pin["images"]["orig"]["url"],
                               width=pin["images"]["orig"]["width"],
                               height=pin["images"]["orig"]["height"],

@@ -18,7 +18,7 @@
 5. `python manage.py makemigrations gallery`
 7. `python manage.py migrate`
 8. `python manage.py runserver`
-9. All done! Now visit your `localhost:8000/gallery/`!
+9. All done! Now login via your `localhost:8000/admin/`
 
 
 ### Technologies
