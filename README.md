@@ -1,4 +1,5 @@
 # PINLERY 
+## THE OLD VERSION! I'm really better at coding now, please check the [Autograding-API](https://github.com/imgVOID/autograding-api) repository.
 #### CMS for an automatic Pinterest-based website creation.
 ### Simple Pinterest parsing with the Python API - now you can use Pinterest as a free modern managed imagebase!
 [![Open Source Helpers](https://www.codetriage.com/imgvoid/pinlery/badges/users.svg)](https://www.codetriage.com/imgvoid/pinlery)
