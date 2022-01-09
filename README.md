@@ -1,9 +1,9 @@
 # PINLERY 
 #### CMS for an automatic Pinterest-based website creation.
-### THE OLD VERSION! I'm really better at coding now, please check the [Autograding-API](https://github.com/imgVOID/autograding-api) repository.
 ### Simple Pinterest parsing with the Python API - now you can use Pinterest as a free modern managed imagebase!
 [![Open Source Helpers](https://www.codetriage.com/imgvoid/pinlery/badges/users.svg)](https://www.codetriage.com/imgvoid/pinlery)
 [![Gitter](https://badges.gitter.im/pinlery/community.svg)](https://gitter.im/pinlery/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+### THE OLD VERSION! I'm really better at coding now, please check the [Autograding-API](https://github.com/imgVOID/autograding-api) repository.
 ### Features
 * Fast Pinterest to Django model object convertor. Synchronise your website media with a Pinterest board, section or profile - it's a fully automatic and easy customisable process.
 * Ready-to-use Django gallery website app. Also, Pinlery is using some well-documented modern Front End technologies like the [IntersectionObserver lazy load](https://github.com/imgVOID/pinlery/blob/new/gallery/static/gallery/js/lazy_loader.js) and an already configured Bootstrap 4, Shuffle.JS, Fancybox, Mmenu.JS plugins.
